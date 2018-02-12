@@ -1,16 +1,20 @@
 package br.com.caelum;
 
 public class Empresa {
+	private int id;
 	private String nome;
 	private String cnpj;
 	private Funcionario[] empregados;
-	private static int numEmpregados = 0;
+	private int numEmpregados;
+	private static int totalDeEmpresas;
 	
-	public Empresa(String nome, String cnpj) {
+	public Empresa(String nome, String cnpj, int totalDeFuncionarios) {
 		super();
+		this.id = ++totalDeEmpresas;
 		this.nome = nome;
 		this.cnpj = cnpj;
-		this.empregados = new Funcionario[10];
+		this.empregados = new Funcionario[totalDeFuncionarios];
+		this.numEmpregados = 0;		
 	}	
 	
 	public void adiciona (Funcionario f) {
@@ -40,6 +44,10 @@ public class Empresa {
 		}
 		
 		return false;
+	}		
+
+	public int getId() {
+		return id;
 	}
 
 	public String getNome() {
@@ -58,11 +66,19 @@ public class Empresa {
 		this.cnpj = cnpj;
 	}
 
-	public Funcionario[] getEmpregados() {
-		return empregados;
+	public Funcionario getFuncionario(int posicao) {
+		try {
+			return this.empregados[posicao];
+		}
+		catch (ArrayIndexOutOfBoundsException ex) {
+			System.err.println("Posição Inválida");
+			System.exit(0);
+			return null;
+		}
+			
 	}
 
-	public static int getNumEmpregados() {
+	public int getNumEmpregados() {
 		return numEmpregados;
 	}
 	
@@ -70,7 +86,7 @@ public class Empresa {
 	public String toString() {
 		String answer = "Empresa " + this.nome 
 				+ "\nCnpj: " + this.cnpj
-				+ "\nNumero de Funcionários: " + Empresa.numEmpregados;
+				+ "\nNumero de Funcionários: " + this.numEmpregados;
 		
 		for(int i = 0; i < numEmpregados; i++) {
 			answer += "\n" + empregados[i].toString();

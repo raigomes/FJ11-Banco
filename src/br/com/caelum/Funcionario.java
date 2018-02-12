@@ -1,19 +1,22 @@
 package br.com.caelum;
 
 public class Funcionario {
+	private int id;
 	private String nome;
 	private String departamento;
 	private String RG;
 	private Data dataAdmissao;
 	private double salario;
 	private boolean estaNaEmpresa;
+	private static int totalDeFuncionarios;
 	
 	public Funcionario(String nome, String departamento, String rG, String dataAdmissao, double salario) {
 		super();
+		this.id = ++totalDeFuncionarios;
 		this.nome = nome;
 		this.departamento = departamento;
-		RG = rG;
-		this.dataAdmissao = new Data(dataAdmissao, "ddmmyyyy");
+		this.RG = rG;
+		this.dataAdmissao = new Data(dataAdmissao, "ddmmyyyy");		
 		admite(salario);	
 	}
 	
@@ -76,7 +79,8 @@ public class Funcionario {
 	
 	@Override
 	public String toString() {
-		return "\n\nNome = " + this.nome 
+		return "\nID = " + this.id
+				+ "\nNome = " + this.nome 
 				+ "\nDepartamento = " + this.departamento
 				+ "\nData de Admissão = " + this.dataAdmissao 
 				+ "\nSalario = " + this.salario;
