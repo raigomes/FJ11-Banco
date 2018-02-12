@@ -1,7 +1,7 @@
 package br.com.caelum;
 
 public class Data {
-	int dia, mes, ano;
+	private int dia, mes, ano;
 	public static final int JAN = 1;
 	public static final int FEV = 2;
 	public static final int MAR = 3;
@@ -67,7 +67,7 @@ public class Data {
 			
 	}	
 
-	public Data(int dia, int mes, int ano) {
+	private Data(int dia, int mes, int ano) {
 		super();
 		this.dia = dia;
 		this.mes = mes;
