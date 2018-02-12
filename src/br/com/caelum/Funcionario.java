@@ -70,6 +70,10 @@ public class Funcionario {
 		return salario;
 	}
 	
+	public void mostra() {
+		System.out.println(this);
+	}
+	
 	@Override
 	public String toString() {
 		return "\n\nNome = " + this.nome 
