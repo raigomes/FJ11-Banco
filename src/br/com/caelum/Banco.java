@@ -1,12 +1,12 @@
 package br.com.caelum;
 
 public class Banco {
-	Conta[] contas;
-	int numContas;
+	private Conta[] contas;
+	private int numContas;
 	
-	public Banco(int totalDeContas) {
+	public Banco() {
 		// TODO Auto-generated constructor stub
-		this.contas = new Conta[totalDeContas];
+		this.contas = new Conta[10];
 		this.numContas = 0;
 	}
 	
